@@ -1,7 +1,8 @@
-import React from 'react';
-import Form from '../src/components/Form/Form';
+import React from "react";
+import Form from "../components/Form/Form";
 
-import css from '../src/App.module.css';
+import css from "../components/App.module.css";
+import "../styles.css";
 
 export default function App() {
   return (
