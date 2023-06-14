@@ -10,6 +10,9 @@ export default function App() {
         <h1>Weather App</h1>
         <div className={css.introContent}>
           <Form />
+          <a href="https://github.com/HannaTubolets/weather-react-app">
+            See on GitHub
+          </a>
         </div>
       </div>
     </div>
