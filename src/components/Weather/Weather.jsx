@@ -1,26 +1,57 @@
-import React from 'react';
-import axios from 'axios';
-import { Blocks } from 'react-loader-spinner';
+import React, { useEffect, useState } from 'react';
 
-export default function Weather({ city }) {
-  let API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
-  let API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-  axios.get(API_URL).then(showWeather);
+import css from '../Weather/Weather.module.css';
 
-  function showWeather(response) {
-    console.log(response.data);
+const Weather = ({ city }) => {
+  const [showWeather, setShowWeather] = useState(false);
+  const [weatherData, setWeatherData] = useState(null);
 
-    alert(
-      `The temperature in ${response.data.name} is ${Math.round(
-        response.data.main.temp
-      )} °C `
-    );
-  }
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
+        const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        setWeatherData(data);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    if (showWeather) {
+      fetchWeatherData();
+    }
+  }, [city, showWeather]);
+
+  const handleClick = () => {
+    setShowWeather(!showWeather);
+  };
 
   return (
     <div>
-      <h2>Hello from Weather component</h2>
-      <Blocks />
+      <a className={css.favoriteCities} href="#" onClick={handleClick}>
+        {city}
+      </a>
+      {showWeather && weatherData && (
+        <div>
+          <h2>{weatherData.name}</h2>
+          <ul>
+            <li>Temperature: {Math.round(weatherData.main.temp)}°C</li>
+            <li>Humidity: {Math.round(weatherData.main.humidity)}%</li>
+            <li>Wind: {Math.round(weatherData.wind.speed)} km/h</li>
+            <li>Description: {weatherData.weather[0].description}</li>
+            <li>
+              <img
+                src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                alt={weatherData.weather[0].description}
+              />
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default Weather;

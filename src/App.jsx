@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '../src/components/Form/Form';
+import Cities from './components/Cities/Cities';
 
 import css from '../src/App.module.css';
 
@@ -8,6 +9,7 @@ export default function App() {
     <div className={css.intro}>
       <div className={css.introMedia}>
         <h1>Weather App</h1>
+        <Cities />
         <div className={css.introContent}>
           <Form />
           <a href="https://github.com/HannaTubolets/weather-react-app">

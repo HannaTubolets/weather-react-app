@@ -63,7 +63,7 @@
   background: #ffd702;
 }
 
-.city {
+.characteristics {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.2;
@@ -91,4 +91,12 @@
 }
 .numbers {
   color: #ec6e4c;
+}
+
+.city {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #0a60ab;
 }
