@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 
 import css from '../Form/Form.module.css';
@@ -7,26 +7,25 @@ const Form = () => {
   const [city, setCity] = useState('');
   const [isLoaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
-  const [isSearchClicked, setSearchClicked] = useState(false); // New state
+  const [isSearchClicked, setSearchClicked] = useState(false);
 
-  const fetchWeatherData = async url => {
+  const fetchWeatherData = useCallback(async url => {
     try {
       const response = await axios.get(url);
       showWeather(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (isSearchClicked && city !== '') {
-      // Only fetch data when search button is clicked and city is not empty
       const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
       fetchWeatherData(API_URL);
     }
-    setSearchClicked(false); // Reset the search clicked state
-  }, [isSearchClicked, city]);
+    setSearchClicked(false);
+  }, [isSearchClicked, city, fetchWeatherData]);
 
   function showWeather(data) {
     setLoaded(true);

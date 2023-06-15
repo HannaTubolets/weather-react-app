@@ -30,9 +30,9 @@ const Weather = ({ city }) => {
 
   return (
     <div>
-      <a className={css.favoriteCities} href="#" onClick={handleClick}>
+      <button className={css.favoriteCities} href="#" onClick={handleClick}>
         {city}
-      </a>
+      </button>
       {showWeather && weatherData && (
         <div>
           <h2>{weatherData.name}</h2>
