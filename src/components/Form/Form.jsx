@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
+import { Blocks } from 'react-loader-spinner';
 
 import css from '../Form/Form.module.css';
 
@@ -8,13 +9,17 @@ const Form = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
   const [isSearchClicked, setSearchClicked] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const fetchWeatherData = useCallback(async url => {
     try {
+      setLoading(true);
       const response = await axios.get(url);
       showWeather(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -41,7 +46,7 @@ const Form = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setSearchClicked(true); // Set search clicked state to true
+    setSearchClicked(true);
 
     if (city !== '') {
       const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
@@ -67,12 +72,27 @@ const Form = () => {
     setCity(event.target.value);
   }
 
+  if (isLoading) {
+    return (
+      <div className={css.loaderContainer}>
+        <Blocks
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+        />
+      </div>
+    );
+  }
+
   if (isLoaded) {
     return (
       <div>
         <form className={css.weatherForm} onSubmit={handleSubmit}>
           <input
-            type="search"
+            type="text"
             className={css.searchInput}
             placeholder="Enter a city"
             autoFocus={true}
