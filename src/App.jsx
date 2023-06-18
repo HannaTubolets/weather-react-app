@@ -1,21 +1,35 @@
 import React from 'react';
 import Form from '../src/components/Form/Form';
 import Cities from './components/Cities/Cities';
+import Video from '../src/components/video/video.mp4';
 
 import css from '../src/App.module.css';
 
 export default function App() {
   return (
     <div className={css.intro}>
+      <video autoPlay loop muted className={css.videoBackground}>
+        <source src={Video} type="video/mp4" />
+      </video>
       <div className={css.introMedia}>
-        <h1>Weather App</h1>
-        <Cities />
-        <div className={css.introContent}>
-          <Form />
-          <a href="https://github.com/HannaTubolets/weather-react-app">
-            See on GitHub
+        <header>
+          <Cities />
+        </header>
+        <main>
+          <div className={css.introContent}>
+            <Form />
+          </div>
+        </main>
+        <footer>
+          This project was created by Hanna Tubolets and is open sourced{' '}
+          <a
+            href="https://github.com/HannaTubolets/weather-react-app"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            on GitHub
           </a>
-        </div>
+        </footer>
       </div>
     </div>
   );

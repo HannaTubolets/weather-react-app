@@ -1,9 +1,21 @@
 .favoriteCities {
-  color: #0a60ab;
+  color: #fff;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 20px;
   background-color: transparent;
   border: none;
   outline: none;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.favoriteCities:hover {
+  color: #ffd702;
+}
+
+.numbers {
+  color: blueviolet;
 }
