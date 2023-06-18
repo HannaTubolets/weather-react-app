@@ -35,7 +35,6 @@ const Weather = ({ city }) => {
       </button>
       {showWeather && weatherData && (
         <div>
-          {/* <h2>{weatherData.name}</h2> */}
           <ul>
             <li>
               Temperature:{' '}

@@ -1,5 +1,5 @@
 .favoriteCities {
-  color: #fff;
+  color: #161718;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -13,9 +13,10 @@
 }
 
 .favoriteCities:hover {
-  color: #ffd702;
+  color: #429bee;
 }
 
 .numbers {
-  color: blueviolet;
+  color: #0a60ab;
+  font-weight: 600;
 }

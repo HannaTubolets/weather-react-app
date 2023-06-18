@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from '../src/components/Form/Form';
 import Cities from './components/Cities/Cities';
-import Video from '../src/components/video/video.mp4';
+import Video from '../src/components/video/video-2.mp4';
 
 import css from '../src/App.module.css';
 
@@ -21,7 +21,9 @@ export default function App() {
           </div>
         </main>
         <footer>
-          This project was created by Hanna Tubolets and is open sourced{' '}
+          <p className={css.footer}>
+            This project was created by Hanna Tubolets and is open sourced
+          </p>
           <a
             href="https://github.com/HannaTubolets/weather-react-app"
             target="_blank"
