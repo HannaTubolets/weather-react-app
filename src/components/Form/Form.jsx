@@ -75,21 +75,14 @@ const Form = () => {
   if (isLoading) {
     return (
       <div className={css.loaderContainer}>
-        <Blocks
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="blocks-loading"
-          wrapperStyle={{}}
-          wrapperClass="blocks-wrapper"
-        />
+        <Blocks />
       </div>
     );
   }
 
   if (isLoaded) {
     return (
-      <div>
+      <div className={css.formWrapper}>
         <form className={css.weatherForm} onSubmit={handleSubmit}>
           <input
             type="text"
@@ -110,33 +103,43 @@ const Form = () => {
             Current
           </button>
         </form>
-        <h2 className={css.city}>{weather.name}</h2>
-        <ul className={css.currentPlaceDate}>
-          <li className={css.characteristics}>
-            Temperature:{' '}
-            <span className={css.numbers}>
-              {Math.round(weather.temperature)}°C
-            </span>
-          </li>
-          <li className={css.characteristics}>
-            Humidity:
-            <span className={css.numbers}>
-              {' '}
-              {Math.round(weather.humidity)}%{' '}
-            </span>
-          </li>
-          <li className={css.characteristics}>
-            Wind:{' '}
-            <span className={css.numbers}>{Math.round(weather.wind)} km/h</span>{' '}
-          </li>
-          <li className={css.characteristics}>
-            Description:{' '}
-            <span className={css.numbers}>{weather.description}</span>
-          </li>
-          <li className={css.characteristics}>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
+        <div className="row">
+          <h2 className={css.city}>{weather.name}</h2>
+          <div className="col-6">
+            <ul className={css.currentPlaceDate}>
+              <li className={css.characteristics}>
+                Temperature:{' '}
+                <span className={css.numbers}>
+                  {Math.round(weather.temperature)}°C
+                </span>
+              </li>
+              <li className={css.characteristics}>
+                Description:{' '}
+                <span className={css.numbers}>{weather.description}</span>
+              </li>
+              <li className={css.characteristics}>
+                <img src={weather.icon} alt={weather.description} width={80} />
+              </li>
+            </ul>
+          </div>
+          <div className="col-6">
+            <ul className={css.currentPlaceDate}>
+              <li className={css.characteristics}>
+                Humidity:
+                <span className={css.numbers}>
+                  {' '}
+                  {Math.round(weather.humidity)}%{' '}
+                </span>
+              </li>
+              <li className={css.characteristics}>
+                Wind:{' '}
+                <span className={css.numbers}>
+                  {Math.round(weather.wind)} km/h
+                </span>{' '}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   } else {

@@ -1,7 +1,6 @@
 .intro {
   position: relative;
-  padding: 80px 16px;
-
+  padding: 64px 16px;
   display: flex;
   justify-content: center;
   align-items: center;

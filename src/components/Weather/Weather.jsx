@@ -29,46 +29,44 @@ const Weather = ({ city }) => {
   };
 
   return (
-    <div>
+    <div className={css.cityWrapper}>
       <button className={css.favoriteCities} href="#" onClick={handleClick}>
         {city}
       </button>
       {showWeather && weatherData && (
-        <div>
-          <ul>
-            <li>
-              Temperature:{' '}
-              <span className={css.numbers}>
-                {' '}
-                {Math.round(weatherData.main.temp)}°C{' '}
-              </span>
-            </li>
-            <li>
-              Humidity:{' '}
-              <span className={css.numbers}>
-                {Math.round(weatherData.main.humidity)}%{' '}
-              </span>
-            </li>
-            <li>
-              Wind:{' '}
-              <span className={css.numbers}>
-                {Math.round(weatherData.wind.speed)} km/h{' '}
-              </span>
-            </li>
-            <li>
-              Description:{' '}
-              <span className={css.numbers}>
-                {weatherData.weather[0].description}{' '}
-              </span>
-            </li>
-            <li>
-              <img
-                src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-                alt={weatherData.weather[0].description}
-              />
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            Temperature:{' '}
+            <span className={css.numbers}>
+              {' '}
+              {Math.round(weatherData.main.temp)}°C{' '}
+            </span>
+          </li>
+          <li>
+            Humidity:{' '}
+            <span className={css.numbers}>
+              {Math.round(weatherData.main.humidity)}%{' '}
+            </span>
+          </li>
+          <li>
+            Wind:{' '}
+            <span className={css.numbers}>
+              {Math.round(weatherData.wind.speed)} km/h{' '}
+            </span>
+          </li>
+          <li>
+            Description:{' '}
+            <span className={css.numbers}>
+              {weatherData.weather[0].description}{' '}
+            </span>
+          </li>
+          <li>
+            <img
+              src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+              alt={weatherData.weather[0].description}
+            />
+          </li>
+        </ul>
       )}
     </div>
   );
