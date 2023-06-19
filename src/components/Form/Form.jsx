@@ -108,17 +108,17 @@ const Form = () => {
           <div className="col-6">
             <ul className={css.currentPlaceDate}>
               <li className={css.characteristics}>
-                Temperature:{' '}
+                <span className={css.numbers}>{weather.description}</span>
+              </li>
+            </ul>
+            <ul className={css.temperature}>
+              <li className={css.characteristics}>
+                <img src={weather.icon} alt={weather.description} width={80} />
+              </li>
+              <li className={css.characteristics}>
                 <span className={css.numbers}>
                   {Math.round(weather.temperature)}°C
                 </span>
-              </li>
-              <li className={css.characteristics}>
-                Description:{' '}
-                <span className={css.numbers}>{weather.description}</span>
-              </li>
-              <li className={css.characteristics}>
-                <img src={weather.icon} alt={weather.description} width={80} />
               </li>
             </ul>
           </div>

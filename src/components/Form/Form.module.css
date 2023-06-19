@@ -103,9 +103,8 @@
 .currentPlaceDate {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 16px;
   align-items: baseline;
-  margin-bottom: 30px;
 }
 .numbers {
   color: #fae04d;
@@ -122,4 +121,10 @@
 .loaderContainer {
   text-align: center;
   justify-items: center;
+}
+
+.temperature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

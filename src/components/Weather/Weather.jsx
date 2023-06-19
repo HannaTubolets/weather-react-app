@@ -36,35 +36,34 @@ const Weather = ({ city }) => {
       {showWeather && weatherData && (
         <ul>
           <li>
-            Temperature:{' '}
+            <span className={css.icon}>
+              <img
+                src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                alt={weatherData.weather[0].description}
+              />
+            </span>
             <span className={css.numbers}>
-              {' '}
-              {Math.round(weatherData.main.temp)}°C{' '}
+              {Math.round(weatherData.main.temp)}°C
             </span>
           </li>
           <li>
-            Humidity:{' '}
-            <span className={css.numbers}>
-              {Math.round(weatherData.main.humidity)}%{' '}
-            </span>
+            <li className={css.text}>
+              <span className={css.numbers}>
+                {weatherData.weather[0].description}{' '}
+              </span>
+            </li>
+            <li className={css.text}>
+              Humidity:{' '}
+              <span className={css.numbers}>
+                {Math.round(weatherData.main.humidity)}%{' '}
+              </span>
+            </li>
           </li>
-          <li>
+          <li className={css.text}>
             Wind:{' '}
             <span className={css.numbers}>
               {Math.round(weatherData.wind.speed)} km/h{' '}
             </span>
-          </li>
-          <li>
-            Description:{' '}
-            <span className={css.numbers}>
-              {weatherData.weather[0].description}{' '}
-            </span>
-          </li>
-          <li>
-            <img
-              src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-              alt={weatherData.weather[0].description}
-            />
           </li>
         </ul>
       )}
