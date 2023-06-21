@@ -114,7 +114,8 @@
   font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 40px;
+  margin-right: 24px;
+
   color: #ffffff;
 }
 
@@ -127,4 +128,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 40px;
 }

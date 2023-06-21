@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Blocks } from 'react-loader-spinner';
+import FormattedDate from '../FormattedDate/FormattedDate';
 
 import css from '../Form/Form.module.css';
 
@@ -36,6 +37,7 @@ const Form = () => {
     setLoaded(true);
     setWeather({
       name: data.name,
+      date: new Date(data.dt * 1000),
       temperature: data.main.temp,
       description: data.weather[0].description,
       humidity: data.main.humidity,
@@ -104,7 +106,10 @@ const Form = () => {
           </button>
         </form>
         <div className="row">
-          <h2 className={css.city}>{weather.name}</h2>
+          <div className={css.date}>
+            <h2 className={css.city}>{weather.name}</h2>
+            <FormattedDate date={weather.date} />
+          </div>
           <div className="col-6">
             <ul className={css.currentPlaceDate}>
               <li className={css.characteristics}>
