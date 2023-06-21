@@ -34,19 +34,23 @@ const Weather = ({ city }) => {
         {city}
       </button>
       {showWeather && weatherData && (
-        <ul>
-          <li>
-            <span className={css.icon}>
-              <img
-                src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-                alt={weatherData.weather[0].description}
-              />
-            </span>
-            <span className={css.numbers}>
-              {Math.round(weatherData.main.temp)}°C
-            </span>
-          </li>
-          <li>
+        <>
+          <ul className={css.iconWrapper}>
+            <li>
+              <span className={css.icon}>
+                <img
+                  src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                  alt={weatherData.weather[0].description}
+                />
+              </span>
+            </li>
+            <li>
+              <span className={css.numbers}>
+                {Math.round(weatherData.main.temp)}°C
+              </span>
+            </li>
+          </ul>
+          <ul>
             <li className={css.text}>
               <span className={css.numbers}>
                 {weatherData.weather[0].description}{' '}
@@ -58,14 +62,14 @@ const Weather = ({ city }) => {
                 {Math.round(weatherData.main.humidity)}%{' '}
               </span>
             </li>
-          </li>
-          <li className={css.text}>
-            Wind:{' '}
-            <span className={css.numbers}>
-              {Math.round(weatherData.wind.speed)} km/h{' '}
-            </span>
-          </li>
-        </ul>
+            <li className={css.text}>
+              Wind:{' '}
+              <span className={css.numbers}>
+                {Math.round(weatherData.wind.speed)} km/h{' '}
+              </span>
+            </li>
+          </ul>
+        </>
       )}
     </div>
   );

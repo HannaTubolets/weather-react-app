@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Blocks } from 'react-loader-spinner';
-import FormattedDate from '../FormattedDate/FormattedDate';
+import WeatherInfo from '../WeatherInfo/WeatherInfo';
 
 import css from '../Form/Form.module.css';
 
@@ -105,46 +105,7 @@ const Form = () => {
             Current
           </button>
         </form>
-        <div className="row">
-          <div className={css.date}>
-            <h2 className={css.city}>{weather.name}</h2>
-            <FormattedDate date={weather.date} />
-          </div>
-          <div className="col-6">
-            <ul className={css.currentPlaceDate}>
-              <li className={css.characteristics}>
-                <span className={css.numbers}>{weather.description}</span>
-              </li>
-            </ul>
-            <ul className={css.temperature}>
-              <li className={css.characteristics}>
-                <img src={weather.icon} alt={weather.description} width={80} />
-              </li>
-              <li className={css.characteristics}>
-                <span className={css.numbers}>
-                  {Math.round(weather.temperature)}°C
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div className="col-6">
-            <ul className={css.currentPlaceDate}>
-              <li className={css.characteristics}>
-                Humidity:
-                <span className={css.numbers}>
-                  {' '}
-                  {Math.round(weather.humidity)}%{' '}
-                </span>
-              </li>
-              <li className={css.characteristics}>
-                Wind:{' '}
-                <span className={css.numbers}>
-                  {Math.round(weather.wind)} km/h
-                </span>{' '}
-              </li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo info={weather} />
       </div>
     );
   } else {

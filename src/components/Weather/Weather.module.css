@@ -21,7 +21,7 @@
 }
 
 .cityWrapper {
-  background: rgba(36, 36, 36, 0.5);
+  background: rgba(36, 36, 36, 0.6);
   padding: 6px 8px;
   border-radius: 4px;
 }
@@ -34,4 +34,10 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
