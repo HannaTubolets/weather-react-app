@@ -22,15 +22,16 @@ export default function App() {
         </main>
         <footer>
           <p className={css.footer}>
-            This project was created by Hanna Tubolets and is open sourced
+            This project was created by Hanna Tubolets and is open sourced{' '}
+            <a
+              className={css.footerLink}
+              href="https://github.com/HannaTubolets/weather-react-app"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              on GitHub
+            </a>
           </p>
-          <a
-            href="https://github.com/HannaTubolets/weather-react-app"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            on GitHub
-          </a>
         </footer>
       </div>
     </div>

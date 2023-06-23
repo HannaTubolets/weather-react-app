@@ -1,6 +1,6 @@
 .characteristics {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.2;
   color: #ffffff;
 }
@@ -25,6 +25,8 @@
 }
 .numbers {
   color: #fae04d;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .city {

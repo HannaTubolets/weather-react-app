@@ -19,6 +19,17 @@
 
 .footer {
   color: #fff;
-  font-weight: 200;
+  font-weight: 400;
   margin-top: 40px;
+}
+
+.footerLink {
+  color: #58b7fc;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footerLink:hover {
+  color: #fae04d;
 }

@@ -29,9 +29,16 @@ const Form = () => {
       const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
       fetchWeatherData(API_URL);
+      setCity('');
     }
     setSearchClicked(false);
   }, [isSearchClicked, city, fetchWeatherData]);
+
+  useEffect(() => {
+    const defaultCity = 'Kyiv';
+    setCity(defaultCity);
+    setSearchClicked(true);
+  }, []);
 
   function showWeather(data) {
     setLoaded(true);
@@ -48,13 +55,13 @@ const Form = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setSearchClicked(true);
-
     if (city !== '') {
       const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
       fetchWeatherData(API_URL);
     }
+    setCity('');
+    setSearchClicked(true);
   }
 
   function handleCurrentButtonClick() {
@@ -92,6 +99,7 @@ const Form = () => {
             placeholder="Enter a city"
             autoFocus={true}
             autoComplete="off"
+            value={city}
             onChange={updateCity}
           />
           <button type="submit" className={css.btnSearch}>
@@ -118,6 +126,7 @@ const Form = () => {
             placeholder="Enter a city"
             autoFocus={true}
             autoComplete="off"
+            value={city}
             onChange={updateCity}
           />
           <button type="submit" className={css.btnSearch}>
