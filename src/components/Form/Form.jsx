@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Blocks } from 'react-loader-spinner';
 import WeatherInfo from '../WeatherInfo/WeatherInfo';
-
+import WeatherForecast from '../WeatherForecast/WeatherForecast';
 import css from '../Form/Form.module.css';
 
 const Form = () => {
@@ -29,7 +29,6 @@ const Form = () => {
       const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
       fetchWeatherData(API_URL);
-      setCity('');
     }
     setSearchClicked(false);
   }, [isSearchClicked, city, fetchWeatherData]);
@@ -44,6 +43,7 @@ const Form = () => {
     setLoaded(true);
     setWeather({
       name: data.name,
+      coordinates: { lat: data.coord.lat, long: data.coord.lon },
       date: new Date(data.dt * 1000),
       temperature: data.main.temp,
       description: data.weather[0].description,
@@ -60,8 +60,9 @@ const Form = () => {
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
       fetchWeatherData(API_URL);
     }
-    setCity('');
+
     setSearchClicked(true);
+    setCity('');
   }
 
   function handleCurrentButtonClick() {
@@ -114,6 +115,10 @@ const Form = () => {
           </button>
         </form>
         <WeatherInfo info={weather} />
+        <WeatherForecast
+          latitude={weather.coordinates.lat}
+          longitude={weather.coordinates.long}
+        />
       </div>
     );
   } else {
