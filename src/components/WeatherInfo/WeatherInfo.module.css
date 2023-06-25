@@ -55,3 +55,9 @@
   align-items: baseline;
   margin-bottom: 40px;
 }
+
+.numbersTemp {
+  color: #fae04d;
+  font-size: 32px;
+  font-weight: 400;
+}

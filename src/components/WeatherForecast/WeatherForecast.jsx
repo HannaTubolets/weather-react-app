@@ -28,6 +28,8 @@ const WeatherForecast = ({ latitude, longitude }) => {
             <div className={css.forecastDay}>
               {new Date(day.dt * 1000).toLocaleDateString('en-US', {
                 weekday: 'short',
+                day: 'numeric',
+                month: 'short',
               })}
             </div>
             <div>

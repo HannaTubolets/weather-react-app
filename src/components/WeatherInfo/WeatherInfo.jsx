@@ -22,7 +22,7 @@ const WeatherInfo = ({ info }) => {
               <img src={info.icon} alt={info.description} width={80} />
             </li>
             <li className={css.characteristics}>
-              <span className={css.numbers}>
+              <span className={css.numbersTemp}>
                 {Math.round(info.temperature)}°C
               </span>
             </li>
