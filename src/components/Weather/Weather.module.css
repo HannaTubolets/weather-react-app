@@ -18,6 +18,13 @@
 .numbers {
   color: #ffd702;
   font-weight: 400;
+  margin-left: 8px;
+}
+
+.numbersTemp {
+  color: #ffd702;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .cityWrapper {
@@ -34,6 +41,12 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
+}
+
+.textTransparent {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 200;
 }
 
 .iconWrapper {

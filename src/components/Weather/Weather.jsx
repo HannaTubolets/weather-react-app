@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { fetchWeatherByCity } from '../../services/Api';
 
 import css from '../Weather/Weather.module.css';
 
@@ -9,10 +10,7 @@ const Weather = ({ city }) => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
-        const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-        const response = await fetch(API_URL);
-        const data = await response.json();
+        const data = await fetchWeatherByCity(city);
         setWeatherData(data);
       } catch (error) {
         console.error('Error fetching weather data:', error);
@@ -45,7 +43,7 @@ const Weather = ({ city }) => {
               </span>
             </li>
             <li>
-              <span className={css.numbers}>
+              <span className={css.numbersTemp}>
                 {Math.round(weatherData.main.temp)}°C
               </span>
             </li>
@@ -56,13 +54,13 @@ const Weather = ({ city }) => {
                 {weatherData.weather[0].description}{' '}
               </span>
             </li>
-            <li className={css.text}>
+            <li className={css.textTransparent}>
               Humidity:{' '}
               <span className={css.numbers}>
                 {Math.round(weatherData.main.humidity)}%{' '}
               </span>
             </li>
-            <li className={css.text}>
+            <li className={css.textTransparent}>
               Wind:{' '}
               <span className={css.numbers}>
                 {Math.round(weatherData.wind.speed)} km/h{' '}
