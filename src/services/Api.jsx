@@ -8,7 +8,6 @@ export async function fetchWeatherByCity(city) {
   try {
     const response = await axios.get(API_URL);
     return response.data;
-    // console.log(response.data);
   } catch (error) {
     console.error('Error fetching weather data:', error);
     throw error;
@@ -22,6 +21,17 @@ export async function fetchWeatherByCoordinates(latitude, longitude) {
     return response.data;
   } catch (error) {
     console.error('Error fetching weather data:', error);
+    throw error;
+  }
+}
+
+export async function fetchWeatherForecast(latitude, longitude) {
+  const API_URL = `${BASE_URL}/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly&appid=${API_KEY}&units=metric`;
+  try {
+    const response = await axios.get(API_URL);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching weather forecast data:', error);
     throw error;
   }
 }

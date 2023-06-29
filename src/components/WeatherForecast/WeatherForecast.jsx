@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchWeatherForecast } from '../../services/Api';
 import css from '../WeatherForecast/WeatherForecast.module.css';
 
 const WeatherForecast = ({ latitude, longitude }) => {
   const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
-    const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
-    const API_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly&appid=${API_KEY}&units=metric`;
-
-    axios
-      .get(API_URL)
-      .then(response => {
-        const dailyForecastData = response.data.daily.slice(0, 5);
-        setForecastData(dailyForecastData);
+    fetchWeatherForecast(latitude, longitude)
+      .then(data => {
+        if (data && data.daily) {
+          const dailyForecastData = data.daily.slice(0, 5);
+          setForecastData(dailyForecastData);
+        }
       })
       .catch(error => {
         console.error('Error fetching weather forecast data:', error);
