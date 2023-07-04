@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { fetchWeatherByCoordinates } from '../../services/Api';
 
 const CurrentWeather = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -6,17 +7,16 @@ const CurrentWeather = () => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        // Get user's geolocation coordinates
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(async position => {
             const { latitude, longitude } = position.coords;
 
-            // Fetch weather data based on user's coordinates
-            const API_KEY = '082d3d02ffdb12f2fd9b259e2ced1d0d';
-            const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
-            const response = await fetch(API_URL);
-            const data = await response.json();
-            setWeatherData(data);
+            try {
+              const data = await fetchWeatherByCoordinates(latitude, longitude);
+              setWeatherData(data);
+            } catch (error) {
+              console.error('Error fetching weather data:', error);
+            }
           });
         } else {
           console.error('Geolocation is not supported by this browser.');
